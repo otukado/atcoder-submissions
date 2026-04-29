@@ -10,11 +10,21 @@ int main() {
     for(int i=0; i<t; ++i) {
         int n;
         cin >> n;
-        vector<vector<ll>> ton (n, vector<int>(2));
+        auto v = vector(n, 0LL);
+        ll sum = 0;
         for(int j=0; j<n; ++j) {
-            cin >> ton[j][0] >> ton[j][1];
+            ll w, p;
+            cin >> w >> p;
+            v[j] = w + p;
+            sum += p;
         }
-        
-        vector<pair<int, 
+        sort(v.begin(), v.end());
+
+        int idx = 0;
+        while(sum - v[idx] >= 0) {
+            sum -= v[idx];
+            ++idx;
+        }
+        cout << idx << '\n';
     }
 }
